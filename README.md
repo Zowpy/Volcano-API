@@ -98,7 +98,65 @@ CoreAPI.getInstance().getDisguiseManager().disguise(Player player, String user, 
 CoreAPI.getInstance().getDisguiseManager().undisguise(Player player, Profile profiler);
 ```
 
+# Settings
 
+## Creating your own setting
+setting's values can be anything and not just booleans
+
+```java
+public class ExampleSettingsItem extends AbstractSettingsItem {
+
+    @Override
+    public ItemStack getItemStack(Player player) {
+        ItemStack itemStack = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta meta = itemStack.getItemMeta();
+
+        boolean enabled = CoreAPI.getInstance().getProfileManager().getByUUID(player.getUniqueId())
+                .getSettings().getSettingOrDefault("test", true); // gets the setting and if it isn't available returns the value given
+
+        meta.setDisplayName(ChatColor.AQUA + "Test Setting");
+
+        String on = ChatColor.GREEN + "■";
+        String off = ChatColor.GRAY + "■";
+
+        meta.setLore(Arrays.asList(
+                ChatColor.GRAY + "Text here",
+                "",
+                (enabled ? on : off) + ChatColor.YELLOW + " Enabled",
+                (enabled ? off : on) + ChatColor.YELLOW + " Disabled"
+        ));
+
+        itemStack.setItemMeta(meta);
+
+        return itemStack;
+    }
+
+    @Override
+    public int getSlot(Player player) {
+        return 5; // the slot where the item will be placed in the settings menu
+    }
+
+    @Override
+    public void onClick(Player player, ClickType clickType) {
+        Profile profile = CoreAPI.getInstance().getProfileManager().getByUUID(player.getUniqueId());
+        boolean setting = profile.getSettings().getSettingOrDefault("test", true); // getting the value for 'test' and if it doesnt exist we return the value given in the second parameter
+
+        profile.getSettings().setSetting("test", !setting); // toggling the 'test' setting
+        CoreAPI.getInstance().getProfileManager().saveAsync(profile); // save the profile after the changes
+    }
+
+    @Override
+    public boolean updateAfterClick(Player player) {
+        return true; // if true the menu is updated after click
+    }
+}
+```
+
+## Registering the SettingsItem
+
+```java
+CoreAPI.getInstance().getSettingsItems().add(new ExampleSettingsItem());
+```
 
 There are way more you can do with the API that I have not covered, you can look at CoreAPI.getInstance() and look through the managers 
 all the methods are pretty straight-forward.
