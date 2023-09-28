@@ -98,5 +98,9 @@ CoreAPI.getInstance().getDisguiseManager().disguise(Player player, String user, 
 CoreAPI.getInstance().getDisguiseManager().undisguise(Player player, Profile profiler);
 ```
 
+
+
 There are way more you can do with the API that I have not covered, you can look at CoreAPI.getInstance() and look through the managers 
 all the methods are pretty straight-forward.
+
+For any help join the discord https://discord.gg/tqJwmJZDbe
