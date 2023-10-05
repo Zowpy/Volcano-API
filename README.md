@@ -158,6 +158,16 @@ public class ExampleSettingsItem extends AbstractSettingsItem {
 CoreAPI.getInstance().getSettingsItems().add(new ExampleSettingsItem());
 ```
 
+# ServerManager
+The servermanager allows you to do many stuff like retrieving information about a specific server (online players, max players, status, tps, and more!)
+
+## Fetching a specific server using it's UUID
+
+```java
+Server server = CoreAPI.getInstance().getServerManager().fetchServer(serverUUID); // this gets the server from Redis
+Server server = CoreAPI.getInstance().getServerManager().getCachedServer(serverUUID); // this gets the server from local cache (bukkit only)
+```
+
 There are way more you can do with the API that I have not covered, you can look at CoreAPI.getInstance() and look through the managers 
 all the methods are pretty straight-forward.
 
