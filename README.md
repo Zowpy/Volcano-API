@@ -168,6 +168,21 @@ Server server = CoreAPI.getInstance().getServerManager().fetchServer(serverUUID)
 Server server = CoreAPI.getInstance().getServerManager().getCachedServer(serverUUID); // this gets the server from local cache (bukkit only)
 ```
 
+# RebootManager
+only available on Bukkit
+
+```java
+long getTimeLeftBeforeReboot(); // in milliseconds
+
+void startShutdown();
+
+void pauseReboot();
+
+void resumeReboot();
+
+boolean isRebootPaused();
+```
+
 There are way more you can do with the API that I have not covered, you can look at CoreAPI.getInstance() and look through the managers 
 all the methods are pretty straight-forward.
 
