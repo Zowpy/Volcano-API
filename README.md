@@ -22,7 +22,6 @@ Profile profile = CoreAPI.getInstance().getProfileManager().findById(uuid);
 ```
 
 # Punishments
-Sadly the Punishment API is only available on Bukkit only.
 
 ## Adding a punishment
 
@@ -86,7 +85,7 @@ public void onGrant(PlayerGrantEvent event) {
 ```
 
 # Disguises
-Disguises API is only available in Bukkit
+Disguise API is only available in Bukkit
 
 ```java
 CoreAPI.getInstance().getDisguiseManager().disguise(Player player, String user, Rank rank);
@@ -100,8 +99,8 @@ CoreAPI.getInstance().getDisguiseManager().undisguise(Player player, Profile pro
 
 # Settings
 
-## Creating your own setting
-setting's values can be anything and not just booleans
+## Creating your custom setting
+setting's values can be anything
 
 ```java
 public class ExampleSettingsItem extends AbstractSettingsItem {
@@ -159,7 +158,7 @@ CoreAPI.getInstance().getSettingsItems().add(new ExampleSettingsItem());
 ```
 
 # ServerManager
-The servermanager allows you to do many stuff like retrieving information about a specific server (online players, max players, status, tps, and more!)
+The server-manager allows you to do much stuff like retrieving information about a specific server (online players, max players, status, tps, and more!)
 
 ## Fetching a specific server using it's UUID
 
@@ -183,7 +182,7 @@ void resumeReboot();
 boolean isRebootPaused();
 ```
 
-There are way more you can do with the API that I have not covered, you can look at CoreAPI.getInstance() and look through the managers 
-all the methods are pretty straight-forward.
+There is way more you can do with the API that I have not covered, you can look at CoreAPI.getInstance() and look through the managers 
+All the methods are straightforward.
 
 For any help join the discord https://discord.gg/tqJwmJZDbe
